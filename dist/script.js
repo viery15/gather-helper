@@ -15,6 +15,7 @@ __webpack_require__.r(__webpack_exports__);
 var ActionType;
 (function (ActionType) {
     ActionType["SINGLE_EMOTICON"] = "SINGLE_EMOTICON";
+    ActionType["MULTI_EMOTICON"] = "MULTI_EMOTICON";
 })(ActionType || (ActionType = {}));
 
 
@@ -84,15 +85,28 @@ var __webpack_exports__ = {};
   \*************************************/
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _popup_enums__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../popup/enums */ "./src/popup/enums.ts");
+var __awaiter = (undefined && undefined.__awaiter) || function (thisArg, _arguments, P, generator) {
+    function adopt(value) { return value instanceof P ? value : new P(function (resolve) { resolve(value); }); }
+    return new (P || (P = Promise))(function (resolve, reject) {
+        function fulfilled(value) { try { step(generator.next(value)); } catch (e) { reject(e); } }
+        function rejected(value) { try { step(generator["throw"](value)); } catch (e) { reject(e); } }
+        function step(result) { result.done ? resolve(result.value) : adopt(result.value).then(fulfilled, rejected); }
+        step((generator = generator.apply(thisArg, _arguments || [])).next());
+    });
+};
 
 const fnc = (event) => {
     if (event.source != window) {
         return;
     }
+    let { emote } = event.data.data;
     switch (event.data.action) {
         case _popup_enums__WEBPACK_IMPORTED_MODULE_0__.ActionType.SINGLE_EMOTICON:
-            const { emote } = event.data.data;
             singleEmote(emote);
+            break;
+        case _popup_enums__WEBPACK_IMPORTED_MODULE_0__.ActionType.MULTI_EMOTICON:
+            console.log(event.data);
+            multiEmote(event.data.data.emote);
             break;
     }
 };
@@ -100,6 +114,16 @@ window.addEventListener("message", fnc, false);
 const singleEmote = (emote) => {
     window.game.setEmote(emote);
 };
+const multiEmote = (emote) => __awaiter(void 0, void 0, void 0, function* () {
+    console.log(emote);
+    for (let i = 0; i < 5; i++) {
+        for (let c = 0; c < emote.length; c++) {
+            window.game.setEmote(emote.charAt(c));
+            yield new Promise((r) => setTimeout(r, 500));
+        }
+        window.game.setEmote("");
+    }
+});
 
 })();
 

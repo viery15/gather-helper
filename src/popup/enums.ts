@@ -1,3 +1,4 @@
 export enum ActionType {
     SINGLE_EMOTICON = 'SINGLE_EMOTICON',
+    MULTI_EMOTICON = 'MULTI_EMOTICON',
 }
