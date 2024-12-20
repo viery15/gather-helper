@@ -16,6 +16,7 @@ var ActionType;
 (function (ActionType) {
     ActionType["SINGLE_EMOTICON"] = "SINGLE_EMOTICON";
     ActionType["MULTI_EMOTICON"] = "MULTI_EMOTICON";
+    ActionType["STEAL_GOKART"] = "STEAL_GOKART";
 })(ActionType || (ActionType = {}));
 
 
@@ -105,8 +106,10 @@ const fnc = (event) => {
             singleEmote(emote);
             break;
         case _popup_enums__WEBPACK_IMPORTED_MODULE_0__.ActionType.MULTI_EMOTICON:
-            console.log(event.data);
             multiEmote(event.data.data.emote);
+            break;
+        case _popup_enums__WEBPACK_IMPORTED_MODULE_0__.ActionType.STEAL_GOKART:
+            stealGocart();
             break;
     }
 };
@@ -115,13 +118,27 @@ const singleEmote = (emote) => {
     window.game.setEmote(emote);
 };
 const multiEmote = (emote) => __awaiter(void 0, void 0, void 0, function* () {
-    console.log(emote);
     for (let i = 0; i < 5; i++) {
         for (let c = 0; c < emote.length; c++) {
             window.game.setEmote(emote.charAt(c));
             yield new Promise((r) => setTimeout(r, 500));
         }
         window.game.setEmote("");
+    }
+});
+const stealGocart = () => __awaiter(void 0, void 0, void 0, function* () {
+    for (let mapId of Object.keys(window.game.completeMaps)) {
+        const gokartObjects = window.game.filterObjectsInMap(mapId, (obj) => (obj === null || obj === void 0 ? void 0 : obj._name) === "Go-kart");
+        if (gokartObjects.length) {
+            const gokart = gokartObjects[0];
+            if (!gokart || !gokart.id)
+                return;
+            const gokartObj = window.game.getObject(gokart.id);
+            if (!gokartObj)
+                return;
+            window.game.interact(mapId, gokartObj.key);
+            break;
+        }
     }
 });
 

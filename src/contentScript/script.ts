@@ -1,3 +1,4 @@
+import { Game } from "@gathertown/gather-game-client";
 import { ActionType } from "../popup/enums";
 
 const fnc = (event: any) => {
@@ -11,8 +12,10 @@ const fnc = (event: any) => {
       singleEmote(emote);
       break;
     case ActionType.MULTI_EMOTICON:
-      console.log(event.data)
       multiEmote(event.data.data.emote);
+      break;
+    case ActionType.STEAL_GOKART:
+      stealGocart();
       break;
   }
 };
@@ -24,7 +27,6 @@ const singleEmote = (emote: string) => {
 };
 
 const multiEmote = async (emote: string) => {
-  console.log(emote)
   for (let i = 0; i < 5; i++) {
     for (let c = 0; c < emote.length; c++) {
       window.game.setEmote(emote.charAt(c));
@@ -34,11 +36,25 @@ const multiEmote = async (emote: string) => {
   }
 };
 
+const stealGocart = async () => {
+  for (let mapId of Object.keys(window.game.completeMaps)) {
+    const gokartObjects = window.game.filterObjectsInMap(
+      mapId,
+      (obj) => obj?._name === "Go-kart"
+    );
+    if (gokartObjects.length) {
+      const gokart = gokartObjects[0];
+      if (!gokart || !gokart.id) return;
+      const gokartObj = window.game.getObject(gokart.id);
+      if (!gokartObj) return;
+      window.game.interact(mapId, gokartObj.key);
+      break;
+    }
+  }
+};
 declare global {
   interface Window {
-    game: {
-      setEmote: (emote: string) => void;
-    };
+    game: Game;
   }
 }
 

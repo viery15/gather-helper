@@ -180,21 +180,23 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_1__);
-/* harmony import */ var antd__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! antd */ "./node_modules/antd/es/layout/index.js");
-/* harmony import */ var antd__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! antd */ "./node_modules/antd/es/card/index.js");
-/* harmony import */ var antd__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! antd */ "./node_modules/antd/es/badge/index.js");
-/* harmony import */ var antd__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! antd */ "./node_modules/antd/es/typography/index.js");
-/* harmony import */ var _ant_design_icons__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! @ant-design/icons */ "./node_modules/@ant-design/icons/es/icons/CheckCircleOutlined.js");
-/* harmony import */ var _ant_design_icons__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! @ant-design/icons */ "./node_modules/@ant-design/icons/es/icons/DisconnectOutlined.js");
+/* harmony import */ var antd__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! antd */ "./node_modules/antd/es/layout/index.js");
+/* harmony import */ var antd__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! antd */ "./node_modules/antd/es/card/index.js");
+/* harmony import */ var antd__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! antd */ "./node_modules/antd/es/badge/index.js");
+/* harmony import */ var antd__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! antd */ "./node_modules/antd/es/typography/index.js");
+/* harmony import */ var _ant_design_icons__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! @ant-design/icons */ "./node_modules/@ant-design/icons/es/icons/CheckCircleOutlined.js");
+/* harmony import */ var _ant_design_icons__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! @ant-design/icons */ "./node_modules/@ant-design/icons/es/icons/DisconnectOutlined.js");
 /* harmony import */ var _SingleEmoticon__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./SingleEmoticon */ "./src/popup/SingleEmoticon.tsx");
 /* harmony import */ var _MultiEmoticon__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./MultiEmoticon */ "./src/popup/MultiEmoticon.tsx");
+/* harmony import */ var _StealGokart__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./StealGokart */ "./src/popup/StealGokart.tsx");
 
 
 
 
 
 
-const { Content } = antd__WEBPACK_IMPORTED_MODULE_4__["default"];
+
+const { Content } = antd__WEBPACK_IMPORTED_MODULE_5__["default"];
 const Popup = () => {
     const [isConnected, setIsConnected] = (0,react__WEBPACK_IMPORTED_MODULE_1__.useState)(false);
     (0,react__WEBPACK_IMPORTED_MODULE_1__.useEffect)(() => {
@@ -204,7 +206,7 @@ const Popup = () => {
             setIsConnected((_b = (_a = currentTab.url) === null || _a === void 0 ? void 0 : _a.includes('gather.town')) !== null && _b !== void 0 ? _b : false);
         });
     }, []);
-    return ((0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(antd__WEBPACK_IMPORTED_MODULE_4__["default"], { className: "popup-container", children: (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(Content, { children: (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)(antd__WEBPACK_IMPORTED_MODULE_5__["default"], { children: [(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(antd__WEBPACK_IMPORTED_MODULE_6__["default"], { status: isConnected ? "success" : "error", text: (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("span", { style: { marginLeft: 8 }, children: isConnected ? ((0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)(react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.Fragment, { children: [(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(_ant_design_icons__WEBPACK_IMPORTED_MODULE_7__["default"], {}), " Connected to Gather"] })) : ((0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)(react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.Fragment, { children: [(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(_ant_design_icons__WEBPACK_IMPORTED_MODULE_8__["default"], {}), " Not on Gather"] })) }) }), (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)("div", { style: { marginTop: 10 }, children: [(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(antd__WEBPACK_IMPORTED_MODULE_9__["default"].Text, { strong: true, children: "Single Emoticon" }), (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(_SingleEmoticon__WEBPACK_IMPORTED_MODULE_2__["default"], { isConnected: isConnected })] }), (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)("div", { style: { marginTop: 10 }, children: [(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(antd__WEBPACK_IMPORTED_MODULE_9__["default"].Text, { strong: true, children: "Multi Emoticon" }), (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(_MultiEmoticon__WEBPACK_IMPORTED_MODULE_3__["default"], { isConnected: isConnected })] })] }) }) }));
+    return ((0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(antd__WEBPACK_IMPORTED_MODULE_5__["default"], { className: "popup-container", children: (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(Content, { children: (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)(antd__WEBPACK_IMPORTED_MODULE_6__["default"], { children: [(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(antd__WEBPACK_IMPORTED_MODULE_7__["default"], { status: isConnected ? "success" : "error", text: (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("span", { style: { marginLeft: 8 }, children: isConnected ? ((0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)(react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.Fragment, { children: [(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(_ant_design_icons__WEBPACK_IMPORTED_MODULE_8__["default"], {}), " Connected to Gather"] })) : ((0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)(react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.Fragment, { children: [(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(_ant_design_icons__WEBPACK_IMPORTED_MODULE_9__["default"], {}), " Not on Gather"] })) }) }), (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)("div", { style: { marginTop: 10 }, children: [(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(antd__WEBPACK_IMPORTED_MODULE_10__["default"].Text, { strong: true, children: "Single Emoticon" }), (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(_SingleEmoticon__WEBPACK_IMPORTED_MODULE_2__["default"], { isConnected: isConnected })] }), (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)("div", { style: { marginTop: 10 }, children: [(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(antd__WEBPACK_IMPORTED_MODULE_10__["default"].Text, { strong: true, children: "Multi Emoticon" }), (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(_MultiEmoticon__WEBPACK_IMPORTED_MODULE_3__["default"], { isConnected: isConnected })] }), (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("div", { style: { marginTop: 10 }, children: (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(_StealGokart__WEBPACK_IMPORTED_MODULE_4__["default"], {}) })] }) }) }));
 };
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (Popup);
 
@@ -284,6 +286,65 @@ const SingleEmoticon = ({ isConnected }) => {
 
 /***/ }),
 
+/***/ "./src/popup/StealGokart.tsx":
+/*!***********************************!*\
+  !*** ./src/popup/StealGokart.tsx ***!
+  \***********************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
+/* harmony import */ var antd__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! antd */ "./node_modules/antd/es/row/index.js");
+/* harmony import */ var antd__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! antd */ "./node_modules/antd/es/col/index.js");
+/* harmony import */ var antd__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! antd */ "./node_modules/antd/es/button/index.js");
+/* harmony import */ var _ant_design_icons__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! @ant-design/icons */ "./node_modules/@ant-design/icons/es/icons/SendOutlined.js");
+/* harmony import */ var _enums__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./enums */ "./src/popup/enums.ts");
+/* harmony import */ var _utils__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../utils */ "./src/utils.ts");
+var __awaiter = (undefined && undefined.__awaiter) || function (thisArg, _arguments, P, generator) {
+    function adopt(value) { return value instanceof P ? value : new P(function (resolve) { resolve(value); }); }
+    return new (P || (P = Promise))(function (resolve, reject) {
+        function fulfilled(value) { try { step(generator.next(value)); } catch (e) { reject(e); } }
+        function rejected(value) { try { step(generator["throw"](value)); } catch (e) { reject(e); } }
+        function step(result) { result.done ? resolve(result.value) : adopt(result.value).then(fulfilled, rejected); }
+        step((generator = generator.apply(thisArg, _arguments || [])).next());
+    });
+};
+
+
+
+
+
+const StealGokart = () => {
+    const handleSubmit = () => __awaiter(void 0, void 0, void 0, function* () {
+        try {
+            const tabId = yield (0,_utils__WEBPACK_IMPORTED_MODULE_2__.getTabId)();
+            if (!tabId) {
+                console.error('No active tab found');
+                return;
+            }
+            chrome.tabs.sendMessage(tabId, { action: _enums__WEBPACK_IMPORTED_MODULE_1__.ActionType.STEAL_GOKART }, (response) => {
+                if (chrome.runtime.lastError) {
+                    console.error('Message sending failed:', chrome.runtime.lastError);
+                }
+                else {
+                    console.log('Message sent successfully:', response);
+                }
+            });
+        }
+        catch (error) {
+            console.error('Error:', error);
+        }
+    });
+    return ((0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("div", { style: { padding: '16px' }, children: (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(antd__WEBPACK_IMPORTED_MODULE_3__["default"], { gutter: [8, 8], children: (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(antd__WEBPACK_IMPORTED_MODULE_4__["default"], { span: 24, children: (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(antd__WEBPACK_IMPORTED_MODULE_5__["default"], { type: "primary", block: true, onClick: handleSubmit, icon: (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(_ant_design_icons__WEBPACK_IMPORTED_MODULE_6__["default"], {}), children: "Steal Gokart" }) }) }) }));
+};
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (StealGokart);
+
+
+/***/ }),
+
 /***/ "./src/popup/enums.ts":
 /*!****************************!*\
   !*** ./src/popup/enums.ts ***!
@@ -298,6 +359,7 @@ var ActionType;
 (function (ActionType) {
     ActionType["SINGLE_EMOTICON"] = "SINGLE_EMOTICON";
     ActionType["MULTI_EMOTICON"] = "MULTI_EMOTICON";
+    ActionType["STEAL_GOKART"] = "STEAL_GOKART";
 })(ActionType || (ActionType = {}));
 
 

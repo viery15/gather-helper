@@ -1,3 +1,5 @@
+import { Game } from "@gathertown/gather-game-client"
+
 declare var gameSpace: {
   id: number
   mapId: string
@@ -7,6 +9,4 @@ declare var gameSpace: {
   }>
 }
 
-declare var game: {
-  setEmote: (emote: string) => void
-}
+declare var game: Game

@@ -3,6 +3,7 @@ import { Layout, Button, Card, Typography, Badge, Input, Row, Col } from 'antd';
 import { CheckCircleOutlined, DisconnectOutlined, SendOutlined, SmileOutlined } from '@ant-design/icons';
 import SingleEmoticon from './SingleEmoticon';
 import MultiEmoticon from './MultiEmoticon';
+import StealGokart from './StealGokart';
 
 const { Content } = Layout;
 
@@ -41,6 +42,10 @@ const Popup: React.FC = () => {
           <div style={{ marginTop: 10 }}>
             <Typography.Text strong>Multi Emoticon</Typography.Text>
             <MultiEmoticon isConnected={isConnected} />
+          </div>
+
+          <div style={{ marginTop: 10 }}>
+            <StealGokart />
           </div>
         </Card>
       </Content>
