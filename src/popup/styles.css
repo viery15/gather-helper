@@ -1,0 +1,13 @@
+.popup-container {
+  width: 400px;
+  min-height: 200px;
+}
+
+.ant-layout-header {
+  height: 48px;
+  line-height: 48px;
+}
+
+.ant-typography {
+  margin: 0 !important;
+} 
