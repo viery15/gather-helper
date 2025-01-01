@@ -25,6 +25,26 @@ const TeleportToPlayer: React.FC = () => {
         }
     };
 
+    const onPlayerSelected = async (value: string) => {
+        console.log('Selected player ID:', value);
+        const selectedPlayer = players.find(player => player.id === value);
+        if (selectedPlayer) {
+            console.log('Selected player:', selectedPlayer);
+
+            const tabId = await getTabId();
+            if (!tabId) {
+                console.error('No active tab found');
+                return;
+            }
+
+            chrome.tabs.sendMessage(
+                tabId,
+                { action: ActionType.TELEPORT, data: selectedPlayer },
+                (response) => { }
+            );
+        }
+    };
+
     useEffect(() => {
         chrome.runtime.onMessage.addListener((request, sender, sendResponse) => {
             switch (request.action) {
@@ -49,6 +69,9 @@ const TeleportToPlayer: React.FC = () => {
                     if (open) {
                         getPlayers();
                     }
+                }}
+                onChange={(value) => {
+                    onPlayerSelected(value);
                 }}
                 filterOption={(input, option) => {
                     if (!option) return false;

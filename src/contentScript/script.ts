@@ -1,4 +1,4 @@
-import { Game } from "@gathertown/gather-game-client";
+import { Game, Player } from "@gathertown/gather-game-client";
 import { ActionType, MessageSource } from "../popup/enums";
 
 const fnc = (event: any) => {
@@ -20,9 +20,17 @@ const fnc = (event: any) => {
       case ActionType.GET_PLAYERS:
         const players = getAllPlayer();
         window.postMessage(
-          { type: MessageSource.GATHER, action: ActionType.GET_PLAYERS, players },
+          {
+            type: MessageSource.GATHER,
+            action: ActionType.GET_PLAYERS,
+            players,
+          },
           "*"
         );
+        break;
+      case ActionType.TELEPORT:
+        const player = event.data.data as Player;
+        teleport(player.map, player.x, player.y)
         break;
     }
   }
@@ -42,6 +50,10 @@ const multiEmote = async (emote: string) => {
     }
     window.game.setEmote("");
   }
+};
+
+const teleport = async (map: string, x: number, y: number) => {
+  window.game.teleport(map, x, y);
 };
 
 const getAllPlayer = () => {

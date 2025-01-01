@@ -19,6 +19,7 @@ var ActionType;
     ActionType["MULTI_EMOTICON"] = "MULTI_EMOTICON";
     ActionType["STEAL_GOKART"] = "STEAL_GOKART";
     ActionType["GET_PLAYERS"] = "GET_PLAYERS";
+    ActionType["TELEPORT"] = "TELEPORT";
 })(ActionType || (ActionType = {}));
 var MessageSource;
 (function (MessageSource) {

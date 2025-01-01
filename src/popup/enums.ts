@@ -3,6 +3,7 @@ export enum ActionType {
     MULTI_EMOTICON = 'MULTI_EMOTICON',
     STEAL_GOKART = 'STEAL_GOKART',
     GET_PLAYERS = 'GET_PLAYERS',
+    TELEPORT = 'TELEPORT',
 }
 
 export enum MessageSource {

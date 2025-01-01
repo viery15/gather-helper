@@ -19,6 +19,7 @@ var ActionType;
     ActionType["MULTI_EMOTICON"] = "MULTI_EMOTICON";
     ActionType["STEAL_GOKART"] = "STEAL_GOKART";
     ActionType["GET_PLAYERS"] = "GET_PLAYERS";
+    ActionType["TELEPORT"] = "TELEPORT";
 })(ActionType || (ActionType = {}));
 var MessageSource;
 (function (MessageSource) {
@@ -121,7 +122,15 @@ const fnc = (event) => {
                 break;
             case _popup_enums__WEBPACK_IMPORTED_MODULE_0__.ActionType.GET_PLAYERS:
                 const players = getAllPlayer();
-                window.postMessage({ type: _popup_enums__WEBPACK_IMPORTED_MODULE_0__.MessageSource.GATHER, action: _popup_enums__WEBPACK_IMPORTED_MODULE_0__.ActionType.GET_PLAYERS, players }, "*");
+                window.postMessage({
+                    type: _popup_enums__WEBPACK_IMPORTED_MODULE_0__.MessageSource.GATHER,
+                    action: _popup_enums__WEBPACK_IMPORTED_MODULE_0__.ActionType.GET_PLAYERS,
+                    players,
+                }, "*");
+                break;
+            case _popup_enums__WEBPACK_IMPORTED_MODULE_0__.ActionType.TELEPORT:
+                const player = event.data.data;
+                teleport(player.map, player.x, player.y);
                 break;
         }
     }
@@ -138,6 +147,9 @@ const multiEmote = (emote) => __awaiter(void 0, void 0, void 0, function* () {
         }
         window.game.setEmote("");
     }
+});
+const teleport = (map, x, y) => __awaiter(void 0, void 0, void 0, function* () {
+    window.game.teleport(map, x, y);
 });
 const getAllPlayer = () => {
     return window.game.players;

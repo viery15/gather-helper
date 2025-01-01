@@ -392,6 +392,19 @@ const TeleportToPlayer = () => {
             console.error('Error:', error);
         }
     });
+    const onPlayerSelected = (value) => __awaiter(void 0, void 0, void 0, function* () {
+        console.log('Selected player ID:', value);
+        const selectedPlayer = players.find(player => player.id === value);
+        if (selectedPlayer) {
+            console.log('Selected player:', selectedPlayer);
+            const tabId = yield (0,_utils__WEBPACK_IMPORTED_MODULE_2__.getTabId)();
+            if (!tabId) {
+                console.error('No active tab found');
+                return;
+            }
+            chrome.tabs.sendMessage(tabId, { action: _enums__WEBPACK_IMPORTED_MODULE_3__.ActionType.TELEPORT, data: selectedPlayer }, (response) => { });
+        }
+    });
     (0,react__WEBPACK_IMPORTED_MODULE_1__.useEffect)(() => {
         chrome.runtime.onMessage.addListener((request, sender, sendResponse) => {
             switch (request.action) {
@@ -408,6 +421,8 @@ const TeleportToPlayer = () => {
                 if (open) {
                     getPlayers();
                 }
+            }, onChange: (value) => {
+                onPlayerSelected(value);
             }, filterOption: (input, option) => {
                 if (!option)
                     return false;
@@ -438,6 +453,7 @@ var ActionType;
     ActionType["MULTI_EMOTICON"] = "MULTI_EMOTICON";
     ActionType["STEAL_GOKART"] = "STEAL_GOKART";
     ActionType["GET_PLAYERS"] = "GET_PLAYERS";
+    ActionType["TELEPORT"] = "TELEPORT";
 })(ActionType || (ActionType = {}));
 var MessageSource;
 (function (MessageSource) {
