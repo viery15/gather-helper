@@ -10,14 +10,21 @@
 
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   ActionType: () => (/* binding */ ActionType)
+/* harmony export */   ActionType: () => (/* binding */ ActionType),
+/* harmony export */   MessageSource: () => (/* binding */ MessageSource)
 /* harmony export */ });
 var ActionType;
 (function (ActionType) {
     ActionType["SINGLE_EMOTICON"] = "SINGLE_EMOTICON";
     ActionType["MULTI_EMOTICON"] = "MULTI_EMOTICON";
     ActionType["STEAL_GOKART"] = "STEAL_GOKART";
+    ActionType["GET_PLAYERS"] = "GET_PLAYERS";
 })(ActionType || (ActionType = {}));
+var MessageSource;
+(function (MessageSource) {
+    MessageSource["GATHER"] = "GATHER";
+    MessageSource["EXTENSION"] = "EXTENSION";
+})(MessageSource || (MessageSource = {}));
 
 
 /***/ })
@@ -100,17 +107,23 @@ const fnc = (event) => {
     if (event.source != window) {
         return;
     }
-    let { emote } = event.data.data;
-    switch (event.data.action) {
-        case _popup_enums__WEBPACK_IMPORTED_MODULE_0__.ActionType.SINGLE_EMOTICON:
-            singleEmote(emote);
-            break;
-        case _popup_enums__WEBPACK_IMPORTED_MODULE_0__.ActionType.MULTI_EMOTICON:
-            multiEmote(event.data.data.emote);
-            break;
-        case _popup_enums__WEBPACK_IMPORTED_MODULE_0__.ActionType.STEAL_GOKART:
-            stealGocart();
-            break;
+    // let { emote } = event.data.data;
+    if (event.data.type && event.data.type === _popup_enums__WEBPACK_IMPORTED_MODULE_0__.MessageSource.EXTENSION) {
+        switch (event.data.action) {
+            case _popup_enums__WEBPACK_IMPORTED_MODULE_0__.ActionType.SINGLE_EMOTICON:
+                // singleEmote(emote);
+                break;
+            case _popup_enums__WEBPACK_IMPORTED_MODULE_0__.ActionType.MULTI_EMOTICON:
+                multiEmote(event.data.data.emote);
+                break;
+            case _popup_enums__WEBPACK_IMPORTED_MODULE_0__.ActionType.STEAL_GOKART:
+                stealGocart();
+                break;
+            case _popup_enums__WEBPACK_IMPORTED_MODULE_0__.ActionType.GET_PLAYERS:
+                const players = getAllPlayer();
+                window.postMessage({ type: _popup_enums__WEBPACK_IMPORTED_MODULE_0__.MessageSource.GATHER, action: _popup_enums__WEBPACK_IMPORTED_MODULE_0__.ActionType.GET_PLAYERS, players }, "*");
+                break;
+        }
     }
 };
 window.addEventListener("message", fnc, false);
@@ -126,6 +139,9 @@ const multiEmote = (emote) => __awaiter(void 0, void 0, void 0, function* () {
         window.game.setEmote("");
     }
 });
+const getAllPlayer = () => {
+    return window.game.players;
+};
 const stealGocart = () => __awaiter(void 0, void 0, void 0, function* () {
     for (let mapId of Object.keys(window.game.completeMaps)) {
         const gokartObjects = window.game.filterObjectsInMap(mapId, (obj) => (obj === null || obj === void 0 ? void 0 : obj._name) === "Go-kart");

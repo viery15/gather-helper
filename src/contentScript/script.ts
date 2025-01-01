@@ -1,22 +1,30 @@
 import { Game } from "@gathertown/gather-game-client";
-import { ActionType } from "../popup/enums";
+import { ActionType, MessageSource } from "../popup/enums";
 
 const fnc = (event: any) => {
   if (event.source != window) {
     return;
   }
-  let { emote } = event.data.data;
-
-  switch (event.data.action) {
-    case ActionType.SINGLE_EMOTICON:
-      singleEmote(emote);
-      break;
-    case ActionType.MULTI_EMOTICON:
-      multiEmote(event.data.data.emote);
-      break;
-    case ActionType.STEAL_GOKART:
-      stealGocart();
-      break;
+  // let { emote } = event.data.data;
+  if (event.data.type && event.data.type === MessageSource.EXTENSION) {
+    switch (event.data.action) {
+      case ActionType.SINGLE_EMOTICON:
+        // singleEmote(emote);
+        break;
+      case ActionType.MULTI_EMOTICON:
+        multiEmote(event.data.data.emote);
+        break;
+      case ActionType.STEAL_GOKART:
+        stealGocart();
+        break;
+      case ActionType.GET_PLAYERS:
+        const players = getAllPlayer();
+        window.postMessage(
+          { type: MessageSource.GATHER, action: ActionType.GET_PLAYERS, players },
+          "*"
+        );
+        break;
+    }
   }
 };
 
@@ -34,6 +42,10 @@ const multiEmote = async (emote: string) => {
     }
     window.game.setEmote("");
   }
+};
+
+const getAllPlayer = () => {
+  return window.game.players;
 };
 
 const stealGocart = async () => {

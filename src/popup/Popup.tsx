@@ -4,6 +4,7 @@ import { CheckCircleOutlined, DisconnectOutlined, SendOutlined, SmileOutlined } 
 import SingleEmoticon from './SingleEmoticon';
 import MultiEmoticon from './MultiEmoticon';
 import StealGokart from './StealGokart';
+import TeleportToPlayer from './TeleportToPlayer';
 
 const { Content } = Layout;
 
@@ -42,6 +43,11 @@ const Popup: React.FC = () => {
           <div style={{ marginTop: 10 }}>
             <Typography.Text strong>Multi Emoticon</Typography.Text>
             <MultiEmoticon isConnected={isConnected} />
+          </div>
+
+          <div style={{ marginTop: 10 }}>
+            <Typography.Text strong>Teleport to player</Typography.Text>
+            <TeleportToPlayer />
           </div>
 
           <div style={{ marginTop: 10 }}>
