@@ -30,7 +30,10 @@ const fnc = (event: any) => {
         break;
       case ActionType.TELEPORT:
         const player = event.data.data as Player;
-        teleport(player.map, player.x, player.y)
+        teleport(player.map, player.x, player.y);
+        break;
+      case ActionType.MOVEMENT_SPEED:
+        setMovementSpeed(event.data.data);
         break;
     }
   }
@@ -60,6 +63,10 @@ const multiEmote = async (emote: string) => {
 
 const teleport = async (map: string, x: number, y: number) => {
   window.game.teleport(map, x, y);
+};
+
+const setMovementSpeed = async (speed: number) => {
+  window.game.setSpeedModifier(speed);
 };
 
 const getAllPlayer = () => {

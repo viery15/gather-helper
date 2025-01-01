@@ -26,7 +26,6 @@ const TeleportToPlayer: React.FC = () => {
     };
 
     const onPlayerSelected = async (value: string) => {
-        console.log('Selected player ID:', value);
         const selectedPlayer = players.find(player => player.id === value);
         if (selectedPlayer) {
             console.log('Selected player:', selectedPlayer);

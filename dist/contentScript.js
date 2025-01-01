@@ -20,6 +20,7 @@ var ActionType;
     ActionType["STEAL_GOKART"] = "STEAL_GOKART";
     ActionType["GET_PLAYERS"] = "GET_PLAYERS";
     ActionType["TELEPORT"] = "TELEPORT";
+    ActionType["MOVEMENT_SPEED"] = "MOVEMENT_SPEED";
 })(ActionType || (ActionType = {}));
 var MessageSource;
 (function (MessageSource) {

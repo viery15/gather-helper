@@ -20,6 +20,7 @@ var ActionType;
     ActionType["STEAL_GOKART"] = "STEAL_GOKART";
     ActionType["GET_PLAYERS"] = "GET_PLAYERS";
     ActionType["TELEPORT"] = "TELEPORT";
+    ActionType["MOVEMENT_SPEED"] = "MOVEMENT_SPEED";
 })(ActionType || (ActionType = {}));
 var MessageSource;
 (function (MessageSource) {
@@ -131,6 +132,9 @@ const fnc = (event) => {
                 const player = event.data.data;
                 teleport(player.map, player.x, player.y);
                 break;
+            case _popup_enums__WEBPACK_IMPORTED_MODULE_0__.ActionType.MOVEMENT_SPEED:
+                setMovementSpeed(event.data.data);
+                break;
         }
     }
 };
@@ -155,6 +159,9 @@ const multiEmote = (emote) => __awaiter(void 0, void 0, void 0, function* () {
 });
 const teleport = (map, x, y) => __awaiter(void 0, void 0, void 0, function* () {
     window.game.teleport(map, x, y);
+});
+const setMovementSpeed = (speed) => __awaiter(void 0, void 0, void 0, function* () {
+    window.game.setSpeedModifier(speed);
 });
 const getAllPlayer = () => {
     return window.game.players;

@@ -5,6 +5,7 @@ import { CheckCircleOutlined, DisconnectOutlined, SendOutlined, SmileOutlined } 
 import StealGokart from './StealGokart';
 import TeleportToPlayer from './TeleportToPlayer';
 import Emoticon from './Emoticon';
+import MovementSpeed from './MovementSpeed';
 
 const { Content } = Layout;
 
@@ -38,6 +39,11 @@ const Popup: React.FC = () => {
           <div style={{ marginTop: 10 }}>
             <Typography.Text strong>Emoticon</Typography.Text>
             <Emoticon isConnected={isConnected} />
+          </div>
+
+          <div style={{ marginTop: 10 }}>
+            <Typography.Text strong>Movement Speed</Typography.Text>
+            <MovementSpeed />
           </div>
 
           <div style={{ marginTop: 10 }}>
