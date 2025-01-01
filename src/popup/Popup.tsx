@@ -1,10 +1,10 @@
 import React, { useState, useEffect } from 'react';
 import { Layout, Button, Card, Typography, Badge, Input, Row, Col } from 'antd';
 import { CheckCircleOutlined, DisconnectOutlined, SendOutlined, SmileOutlined } from '@ant-design/icons';
-import SingleEmoticon from './SingleEmoticon';
-import MultiEmoticon from './MultiEmoticon';
+
 import StealGokart from './StealGokart';
 import TeleportToPlayer from './TeleportToPlayer';
+import Emoticon from './Emoticon';
 
 const { Content } = Layout;
 
@@ -36,13 +36,8 @@ const Popup: React.FC = () => {
           />
 
           <div style={{ marginTop: 10 }}>
-            <Typography.Text strong>Single Emoticon</Typography.Text>
-            <SingleEmoticon isConnected={isConnected} />
-          </div>
-
-          <div style={{ marginTop: 10 }}>
-            <Typography.Text strong>Multi Emoticon</Typography.Text>
-            <MultiEmoticon isConnected={isConnected} />
+            <Typography.Text strong>Emoticon</Typography.Text>
+            <Emoticon isConnected={isConnected} />
           </div>
 
           <div style={{ marginTop: 10 }}>

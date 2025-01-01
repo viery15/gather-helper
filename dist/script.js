@@ -108,11 +108,10 @@ const fnc = (event) => {
     if (event.source != window) {
         return;
     }
-    // let { emote } = event.data.data;
     if (event.data.type && event.data.type === _popup_enums__WEBPACK_IMPORTED_MODULE_0__.MessageSource.EXTENSION) {
         switch (event.data.action) {
             case _popup_enums__WEBPACK_IMPORTED_MODULE_0__.ActionType.SINGLE_EMOTICON:
-                // singleEmote(emote);
+                setEmote(event.data.data);
                 break;
             case _popup_enums__WEBPACK_IMPORTED_MODULE_0__.ActionType.MULTI_EMOTICON:
                 multiEmote(event.data.data.emote);
@@ -136,8 +135,14 @@ const fnc = (event) => {
     }
 };
 window.addEventListener("message", fnc, false);
-const singleEmote = (emote) => {
-    window.game.setEmote(emote);
+const setEmote = (emote) => {
+    const isEmoji = (str) => /[\p{Emoji}]/u.test(str);
+    if (emote.length > 1 && !isEmoji(emote)) {
+        multiEmote(emote);
+    }
+    else {
+        window.game.setEmote(emote);
+    }
 };
 const multiEmote = (emote) => __awaiter(void 0, void 0, void 0, function* () {
     for (let i = 0; i < 5; i++) {

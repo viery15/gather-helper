@@ -5,11 +5,11 @@ const fnc = (event: any) => {
   if (event.source != window) {
     return;
   }
-  // let { emote } = event.data.data;
+
   if (event.data.type && event.data.type === MessageSource.EXTENSION) {
     switch (event.data.action) {
       case ActionType.SINGLE_EMOTICON:
-        // singleEmote(emote);
+        setEmote(event.data.data);
         break;
       case ActionType.MULTI_EMOTICON:
         multiEmote(event.data.data.emote);
@@ -38,8 +38,14 @@ const fnc = (event: any) => {
 
 window.addEventListener("message", fnc, false);
 
-const singleEmote = (emote: string) => {
-  window.game.setEmote(emote);
+const setEmote = (emote: string) => {
+  const isEmoji = (str: string) => /[\p{Emoji}]/u.test(str);
+
+  if (emote.length > 1 && !isEmoji(emote)) {
+    multiEmote(emote);
+  } else {
+    window.game.setEmote(emote);
+  }
 };
 
 const multiEmote = async (emote: string) => {

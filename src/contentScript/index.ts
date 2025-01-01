@@ -34,7 +34,7 @@ chrome.runtime.onMessage.addListener(
   (
     request: {
       action: keyof typeof ActionType;
-      data: Player;
+      data: any;
     },
     sender,
     sendResponse

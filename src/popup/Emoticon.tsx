@@ -10,7 +10,7 @@ interface SingleEmoticonProps {
   isConnected: boolean;
 }
 
-const SingleEmoticon: React.FC<SingleEmoticonProps> = ({ isConnected }) => {
+const Emoticon: React.FC<SingleEmoticonProps> = ({ isConnected }) => {
   const [emoticon, setEmoticon] = useState('');
   const [showPicker, setShowPicker] = useState(false);
 
@@ -24,7 +24,7 @@ const SingleEmoticon: React.FC<SingleEmoticonProps> = ({ isConnected }) => {
       
       chrome.tabs.sendMessage(
         tabId,
-        { action: ActionType.SINGLE_EMOTICON, emoticon },
+        { action: ActionType.SINGLE_EMOTICON, data: emoticon },
         (response) => {
           if (chrome.runtime.lastError) {
             console.error('Message sending failed:', chrome.runtime.lastError);
@@ -86,4 +86,4 @@ const SingleEmoticon: React.FC<SingleEmoticonProps> = ({ isConnected }) => {
   );
 };
 
-export default SingleEmoticon; 
+export default Emoticon; 

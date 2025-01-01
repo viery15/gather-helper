@@ -94,10 +94,10 @@ var update = _node_modules_style_loader_dist_runtime_injectStylesIntoStyleTag_js
 
 /***/ }),
 
-/***/ "./src/popup/MultiEmoticon.tsx":
-/*!*************************************!*\
-  !*** ./src/popup/MultiEmoticon.tsx ***!
-  \*************************************/
+/***/ "./src/popup/Emoticon.tsx":
+/*!********************************!*\
+  !*** ./src/popup/Emoticon.tsx ***!
+  \********************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 __webpack_require__.r(__webpack_exports__);
@@ -134,7 +134,7 @@ var __awaiter = (undefined && undefined.__awaiter) || function (thisArg, _argume
 
 
 
-const MultiEmoticon = ({ isConnected }) => {
+const Emoticon = ({ isConnected }) => {
     const [emoticon, setEmoticon] = (0,react__WEBPACK_IMPORTED_MODULE_1__.useState)('');
     const [showPicker, setShowPicker] = (0,react__WEBPACK_IMPORTED_MODULE_1__.useState)(false);
     const handleSubmit = () => __awaiter(void 0, void 0, void 0, function* () {
@@ -144,7 +144,7 @@ const MultiEmoticon = ({ isConnected }) => {
                 console.error('No active tab found');
                 return;
             }
-            chrome.tabs.sendMessage(tabId, { action: _enums__WEBPACK_IMPORTED_MODULE_3__.ActionType.MULTI_EMOTICON, emoticon }, (response) => {
+            chrome.tabs.sendMessage(tabId, { action: _enums__WEBPACK_IMPORTED_MODULE_3__.ActionType.SINGLE_EMOTICON, data: emoticon }, (response) => {
                 if (chrome.runtime.lastError) {
                     console.error('Message sending failed:', chrome.runtime.lastError);
                 }
@@ -162,7 +162,7 @@ const MultiEmoticon = ({ isConnected }) => {
                         setShowPicker(false);
                     }, theme: "light", previewPosition: "none", skinTonePosition: "none", maxFrequentRows: 2 }) }))] }));
 };
-/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (MultiEmoticon);
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (Emoticon);
 
 
 /***/ }),
@@ -180,16 +180,15 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_1__);
-/* harmony import */ var antd__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! antd */ "./node_modules/antd/es/layout/index.js");
-/* harmony import */ var antd__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! antd */ "./node_modules/antd/es/card/index.js");
-/* harmony import */ var antd__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! antd */ "./node_modules/antd/es/badge/index.js");
-/* harmony import */ var antd__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! antd */ "./node_modules/antd/es/typography/index.js");
-/* harmony import */ var _ant_design_icons__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! @ant-design/icons */ "./node_modules/@ant-design/icons/es/icons/CheckCircleOutlined.js");
-/* harmony import */ var _ant_design_icons__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! @ant-design/icons */ "./node_modules/@ant-design/icons/es/icons/DisconnectOutlined.js");
-/* harmony import */ var _SingleEmoticon__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./SingleEmoticon */ "./src/popup/SingleEmoticon.tsx");
-/* harmony import */ var _MultiEmoticon__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./MultiEmoticon */ "./src/popup/MultiEmoticon.tsx");
-/* harmony import */ var _StealGokart__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./StealGokart */ "./src/popup/StealGokart.tsx");
-/* harmony import */ var _TeleportToPlayer__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./TeleportToPlayer */ "./src/popup/TeleportToPlayer.tsx");
+/* harmony import */ var antd__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! antd */ "./node_modules/antd/es/layout/index.js");
+/* harmony import */ var antd__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! antd */ "./node_modules/antd/es/card/index.js");
+/* harmony import */ var antd__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! antd */ "./node_modules/antd/es/badge/index.js");
+/* harmony import */ var antd__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! antd */ "./node_modules/antd/es/typography/index.js");
+/* harmony import */ var _ant_design_icons__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! @ant-design/icons */ "./node_modules/@ant-design/icons/es/icons/CheckCircleOutlined.js");
+/* harmony import */ var _ant_design_icons__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! @ant-design/icons */ "./node_modules/@ant-design/icons/es/icons/DisconnectOutlined.js");
+/* harmony import */ var _StealGokart__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./StealGokart */ "./src/popup/StealGokart.tsx");
+/* harmony import */ var _TeleportToPlayer__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./TeleportToPlayer */ "./src/popup/TeleportToPlayer.tsx");
+/* harmony import */ var _Emoticon__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./Emoticon */ "./src/popup/Emoticon.tsx");
 
 
 
@@ -197,8 +196,7 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
-
-const { Content } = antd__WEBPACK_IMPORTED_MODULE_6__["default"];
+const { Content } = antd__WEBPACK_IMPORTED_MODULE_5__["default"];
 const Popup = () => {
     const [isConnected, setIsConnected] = (0,react__WEBPACK_IMPORTED_MODULE_1__.useState)(false);
     (0,react__WEBPACK_IMPORTED_MODULE_1__.useEffect)(() => {
@@ -208,82 +206,9 @@ const Popup = () => {
             setIsConnected((_b = (_a = currentTab.url) === null || _a === void 0 ? void 0 : _a.includes('gather.town')) !== null && _b !== void 0 ? _b : false);
         });
     }, []);
-    return ((0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(antd__WEBPACK_IMPORTED_MODULE_6__["default"], { className: "popup-container", children: (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(Content, { children: (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)(antd__WEBPACK_IMPORTED_MODULE_7__["default"], { children: [(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(antd__WEBPACK_IMPORTED_MODULE_8__["default"], { status: isConnected ? "success" : "error", text: (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("span", { style: { marginLeft: 8 }, children: isConnected ? ((0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)(react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.Fragment, { children: [(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(_ant_design_icons__WEBPACK_IMPORTED_MODULE_9__["default"], {}), " Connected to Gather"] })) : ((0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)(react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.Fragment, { children: [(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(_ant_design_icons__WEBPACK_IMPORTED_MODULE_10__["default"], {}), " Not on Gather"] })) }) }), (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)("div", { style: { marginTop: 10 }, children: [(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(antd__WEBPACK_IMPORTED_MODULE_11__["default"].Text, { strong: true, children: "Single Emoticon" }), (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(_SingleEmoticon__WEBPACK_IMPORTED_MODULE_2__["default"], { isConnected: isConnected })] }), (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)("div", { style: { marginTop: 10 }, children: [(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(antd__WEBPACK_IMPORTED_MODULE_11__["default"].Text, { strong: true, children: "Multi Emoticon" }), (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(_MultiEmoticon__WEBPACK_IMPORTED_MODULE_3__["default"], { isConnected: isConnected })] }), (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)("div", { style: { marginTop: 10 }, children: [(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(antd__WEBPACK_IMPORTED_MODULE_11__["default"].Text, { strong: true, children: "Teleport to player" }), (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(_TeleportToPlayer__WEBPACK_IMPORTED_MODULE_5__["default"], {})] }), (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("div", { style: { marginTop: 10 }, children: (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(_StealGokart__WEBPACK_IMPORTED_MODULE_4__["default"], {}) })] }) }) }));
+    return ((0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(antd__WEBPACK_IMPORTED_MODULE_5__["default"], { className: "popup-container", children: (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(Content, { children: (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)(antd__WEBPACK_IMPORTED_MODULE_6__["default"], { children: [(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(antd__WEBPACK_IMPORTED_MODULE_7__["default"], { status: isConnected ? "success" : "error", text: (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("span", { style: { marginLeft: 8 }, children: isConnected ? ((0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)(react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.Fragment, { children: [(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(_ant_design_icons__WEBPACK_IMPORTED_MODULE_8__["default"], {}), " Connected to Gather"] })) : ((0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)(react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.Fragment, { children: [(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(_ant_design_icons__WEBPACK_IMPORTED_MODULE_9__["default"], {}), " Not on Gather"] })) }) }), (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)("div", { style: { marginTop: 10 }, children: [(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(antd__WEBPACK_IMPORTED_MODULE_10__["default"].Text, { strong: true, children: "Emoticon" }), (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(_Emoticon__WEBPACK_IMPORTED_MODULE_4__["default"], { isConnected: isConnected })] }), (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)("div", { style: { marginTop: 10 }, children: [(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(antd__WEBPACK_IMPORTED_MODULE_10__["default"].Text, { strong: true, children: "Teleport to player" }), (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(_TeleportToPlayer__WEBPACK_IMPORTED_MODULE_3__["default"], {})] }), (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("div", { style: { marginTop: 10 }, children: (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(_StealGokart__WEBPACK_IMPORTED_MODULE_2__["default"], {}) })] }) }) }));
 };
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (Popup);
-
-
-/***/ }),
-
-/***/ "./src/popup/SingleEmoticon.tsx":
-/*!**************************************!*\
-  !*** ./src/popup/SingleEmoticon.tsx ***!
-  \**************************************/
-/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
-
-__webpack_require__.r(__webpack_exports__);
-/* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
-/* harmony export */ });
-/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
-/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
-/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_1__);
-/* harmony import */ var antd__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! antd */ "./node_modules/antd/es/row/index.js");
-/* harmony import */ var antd__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! antd */ "./node_modules/antd/es/col/index.js");
-/* harmony import */ var antd__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! antd */ "./node_modules/antd/es/input/index.js");
-/* harmony import */ var antd__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! antd */ "./node_modules/antd/es/button/index.js");
-/* harmony import */ var _ant_design_icons__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! @ant-design/icons */ "./node_modules/@ant-design/icons/es/icons/SmileOutlined.js");
-/* harmony import */ var _ant_design_icons__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! @ant-design/icons */ "./node_modules/@ant-design/icons/es/icons/SendOutlined.js");
-/* harmony import */ var _emoji_mart_data__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! @emoji-mart/data */ "./node_modules/@emoji-mart/data/sets/15/native.json");
-/* harmony import */ var _emoji_mart_react__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @emoji-mart/react */ "./node_modules/@emoji-mart/react/dist/module.js");
-/* harmony import */ var _enums__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./enums */ "./src/popup/enums.ts");
-/* harmony import */ var _utils__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../utils */ "./src/utils.ts");
-var __awaiter = (undefined && undefined.__awaiter) || function (thisArg, _arguments, P, generator) {
-    function adopt(value) { return value instanceof P ? value : new P(function (resolve) { resolve(value); }); }
-    return new (P || (P = Promise))(function (resolve, reject) {
-        function fulfilled(value) { try { step(generator.next(value)); } catch (e) { reject(e); } }
-        function rejected(value) { try { step(generator["throw"](value)); } catch (e) { reject(e); } }
-        function step(result) { result.done ? resolve(result.value) : adopt(result.value).then(fulfilled, rejected); }
-        step((generator = generator.apply(thisArg, _arguments || [])).next());
-    });
-};
-
-
-
-
-
-
-
-
-const SingleEmoticon = ({ isConnected }) => {
-    const [emoticon, setEmoticon] = (0,react__WEBPACK_IMPORTED_MODULE_1__.useState)('');
-    const [showPicker, setShowPicker] = (0,react__WEBPACK_IMPORTED_MODULE_1__.useState)(false);
-    const handleSubmit = () => __awaiter(void 0, void 0, void 0, function* () {
-        try {
-            const tabId = yield (0,_utils__WEBPACK_IMPORTED_MODULE_4__.getTabId)();
-            if (!tabId) {
-                console.error('No active tab found');
-                return;
-            }
-            chrome.tabs.sendMessage(tabId, { action: _enums__WEBPACK_IMPORTED_MODULE_3__.ActionType.SINGLE_EMOTICON, emoticon }, (response) => {
-                if (chrome.runtime.lastError) {
-                    console.error('Message sending failed:', chrome.runtime.lastError);
-                }
-                else {
-                    console.log('Message sent successfully:', response);
-                }
-            });
-        }
-        catch (error) {
-            console.error('Error:', error);
-        }
-    });
-    return ((0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)("div", { children: [(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)(antd__WEBPACK_IMPORTED_MODULE_5__["default"], { gutter: 8, style: { marginTop: 8 }, children: [(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(antd__WEBPACK_IMPORTED_MODULE_6__["default"], { flex: "auto", children: (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(antd__WEBPACK_IMPORTED_MODULE_7__["default"], { placeholder: "Enter emoticon", value: emoticon, onChange: (e) => setEmoticon(e.target.value), disabled: !isConnected, suffix: (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(_ant_design_icons__WEBPACK_IMPORTED_MODULE_8__["default"], { onClick: () => setShowPicker(!showPicker), style: { cursor: 'pointer' } }) }) }), (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(antd__WEBPACK_IMPORTED_MODULE_6__["default"], { children: (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(antd__WEBPACK_IMPORTED_MODULE_9__["default"], { type: "primary", icon: (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(_ant_design_icons__WEBPACK_IMPORTED_MODULE_10__["default"], {}), disabled: !isConnected, onClick: handleSubmit, children: "Submit" }) })] }), showPicker && ((0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("div", { style: { position: 'absolute', zIndex: 1, marginTop: 8 }, children: (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(_emoji_mart_react__WEBPACK_IMPORTED_MODULE_2__["default"], { data: _emoji_mart_data__WEBPACK_IMPORTED_MODULE_11__, onEmojiSelect: (emoji) => {
-                        setEmoticon(emoji.native);
-                        setShowPicker(false);
-                    }, theme: "light", previewPosition: "none", skinTonePosition: "none", maxFrequentRows: 2 }) }))] }));
-};
-/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (SingleEmoticon);
 
 
 /***/ }),
