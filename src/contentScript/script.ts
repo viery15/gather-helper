@@ -176,6 +176,9 @@ async function attack() {
     await new Promise((r) => setTimeout(r, 100));
   }
   await new Promise((r) => setTimeout(r, 3000));
+  for (const coord of coordinateToClear) {
+    window.game.setImpassable(myPlayer.map, coord.x, coord.y, false);
+  }
   for (let i = 0; i < attackLength; i++) {
     try {
       window.game.deleteObject(
@@ -187,9 +190,7 @@ async function attack() {
     await new Promise((r) => setTimeout(r, 100));
   }
 
-  for (const coord of coordinateToClear) {
-    window.game.setImpassable(myPlayer.map, coord.x, coord.y, false);
-  }
+  
 }
 
 document.onkeydown = function (event) {

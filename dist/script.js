@@ -250,15 +250,15 @@ function attack() {
             yield new Promise((r) => setTimeout(r, 100));
         }
         yield new Promise((r) => setTimeout(r, 3000));
+        for (const coord of coordinateToClear) {
+            window.game.setImpassable(myPlayer.map, coord.x, coord.y, false);
+        }
         for (let i = 0; i < attackLength; i++) {
             try {
                 window.game.deleteObject(myPlayer.map, window.game.filterObjectsInMap(myPlayer.map, (o) => o._name === `${myPlayer.id}-attack-${i}`)[0].id, true);
             }
             catch (e) { }
             yield new Promise((r) => setTimeout(r, 100));
-        }
-        for (const coord of coordinateToClear) {
-            window.game.setImpassable(myPlayer.map, coord.x, coord.y, false);
         }
     });
 }
