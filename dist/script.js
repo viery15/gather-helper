@@ -197,7 +197,7 @@ function attack() {
             type: 0,
             x: 0,
             y: 0,
-            normal: "https://cdn.gather.town/storage.googleapis.com/gather-town.appspot.com/internal-dashboard/images/3d1W_l0DR0aYJyOlTIpsh",
+            normal: "https://cdn.gather.town/storage.googleapis.com/gather-town.appspot.com/uploads/AINCCmZXW7UUFZtu/IMwxmC96B6NXmuNjqXScPb",
             _name: ""
         };
         const coordinateToClear = [];
@@ -224,7 +224,7 @@ function attack() {
                     coordinateToClear.push({ x: object.x, y: object.y - 1 });
                     break;
                 case 7: // right
-                    object.x = curPos.x - 1 + i;
+                    object.x = curPos.x + i;
                     object.y = curPos.y;
                     window.game.setImpassable(myPlayer.map, object.x, object.y, true);
                     coordinateToClear.push({ x: object.x, y: object.y });
@@ -235,7 +235,7 @@ function attack() {
                     break;
                 case 1: // down
                     object.x = curPos.x;
-                    object.y = curPos.y - 1 + i;
+                    object.y = curPos.y + i;
                     window.game.setImpassable(myPlayer.map, object.x, object.y, true);
                     coordinateToClear.push({ x: object.x, y: object.y });
                     window.game.setImpassable(myPlayer.map, object.x + 1, object.y, true);
@@ -264,7 +264,6 @@ function attack() {
 }
 document.onkeydown = function (event) {
     if (event.keyCode === 67) {
-        console.log('triggered');
         attack();
     }
 };
