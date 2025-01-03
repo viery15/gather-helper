@@ -181,31 +181,26 @@ const stealGocart = () => __awaiter(void 0, void 0, void 0, function* () {
         }
     }
 });
-const getPos = () => {
-    const player = window.game.getMyPlayer();
-    return { x: player.x, y: player.y, direction: player.direction };
-};
 function attack() {
     return __awaiter(this, void 0, void 0, function* () {
-        const attackLength = 5;
+        const attackRange = 5;
         const myPlayer = window.game.getMyPlayer();
-        const curPos = getPos();
         const object = {
             height: 2,
             width: 2,
-            zIndex: 258,
+            zIndex: 999,
             type: 0,
             x: 0,
             y: 0,
             normal: "https://cdn.gather.town/storage.googleapis.com/gather-town.appspot.com/uploads/AINCCmZXW7UUFZtu/IMwxmC96B6NXmuNjqXScPb",
-            _name: ""
+            _name: "",
         };
         const coordinateToClear = [];
-        for (let i = 0; i < attackLength; i++) {
-            switch (curPos.direction) {
+        for (let i = 0; i < attackRange; i++) {
+            switch (myPlayer.direction) {
                 case 3: // up
-                    object.x = curPos.x;
-                    object.y = curPos.y - 1 - i;
+                    object.x = myPlayer.x;
+                    object.y = myPlayer.y - 1 - i;
                     window.game.setImpassable(myPlayer.map, object.x, object.y, true);
                     coordinateToClear.push({ x: object.x, y: object.y });
                     window.game.setImpassable(myPlayer.map, object.x + 1, object.y, true);
@@ -214,8 +209,8 @@ function attack() {
                     coordinateToClear.push({ x: object.x - 1, y: object.y });
                     break;
                 case 5: // left
-                    object.x = curPos.x - 1 - i;
-                    object.y = curPos.y;
+                    object.x = myPlayer.x - 1 - i;
+                    object.y = myPlayer.y;
                     window.game.setImpassable(myPlayer.map, object.x, object.y, true);
                     coordinateToClear.push({ x: object.x, y: object.y });
                     window.game.setImpassable(myPlayer.map, object.x, object.y + 1, true);
@@ -224,8 +219,8 @@ function attack() {
                     coordinateToClear.push({ x: object.x, y: object.y - 1 });
                     break;
                 case 7: // right
-                    object.x = curPos.x + i;
-                    object.y = curPos.y;
+                    object.x = myPlayer.x + i;
+                    object.y = myPlayer.y;
                     window.game.setImpassable(myPlayer.map, object.x, object.y, true);
                     coordinateToClear.push({ x: object.x, y: object.y });
                     window.game.setImpassable(myPlayer.map, object.x, object.y + 1, true);
@@ -234,8 +229,8 @@ function attack() {
                     coordinateToClear.push({ x: object.x, y: object.y - 1 });
                     break;
                 case 1: // down
-                    object.x = curPos.x;
-                    object.y = curPos.y + i;
+                    object.x = myPlayer.x;
+                    object.y = myPlayer.y + i;
                     window.game.setImpassable(myPlayer.map, object.x, object.y, true);
                     coordinateToClear.push({ x: object.x, y: object.y });
                     window.game.setImpassable(myPlayer.map, object.x + 1, object.y, true);
@@ -253,9 +248,10 @@ function attack() {
         for (const coord of coordinateToClear) {
             window.game.setImpassable(myPlayer.map, coord.x, coord.y, false);
         }
-        for (let i = 0; i < attackLength; i++) {
+        const objectToRemove = window.game.filterObjectsInMap(myPlayer.map, (o) => { var _a; return (_a = o._name) === null || _a === void 0 ? void 0 : _a.includes(`${myPlayer.id}-attack`); });
+        for (let i = 0; i < objectToRemove.length; i++) {
             try {
-                window.game.deleteObject(myPlayer.map, window.game.filterObjectsInMap(myPlayer.map, (o) => o._name === `${myPlayer.id}-attack-${i}`)[0].id, true);
+                window.game.deleteObject(myPlayer.map, objectToRemove[i].id, true);
             }
             catch (e) { }
             yield new Promise((r) => setTimeout(r, 100));
@@ -263,7 +259,7 @@ function attack() {
     });
 }
 document.onkeydown = function (event) {
-    if (event.keyCode === 67) {
+    if (event.keyCode === 67) { // C
         attack();
     }
 };
